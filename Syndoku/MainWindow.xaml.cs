@@ -33,9 +33,12 @@ namespace Syndoku
             SudokuGrid.ObscureCells();
 
             var CurrentPuzzle = new Puzzle(1, GameGrid);
+            // replace CurrentPuzzle.Read(); with CurrentPuzzle.Write(); to test writing functionality
+            // refer to puzzles.txt for saved puzzles, and Puzzle.cs for underlying code
             CurrentPuzzle.Read();
         }
         
+        // currently unimplemented
         private void CellClick(object sender, MouseButtonEventArgs e) {
             TextBlock tb = sender as TextBlock;
 
