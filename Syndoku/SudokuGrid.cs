@@ -231,7 +231,7 @@ namespace Syndoku
         /// <param name="column"></param>
         /// <returns></returns>
         private List<TextBlock> GetBox(int row, int column) {
-            // consider using nested switch statements for both row and column here
+            // is this the best way to organize these statements?
             switch (row) {
                 case 0:
                 case 1:

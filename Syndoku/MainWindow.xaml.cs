@@ -29,13 +29,14 @@ namespace Syndoku
         private void InitializeGame() {
             var SudokuGrid = new SudokuGrid(GameGrid);
             SudokuGrid.Organize();
+            // should we be generating a new puzzle every time, even if just loading a puzzle? likely not right?
             SudokuGrid.Generate();
             SudokuGrid.ObscureCells();
 
             var CurrentPuzzle = new Puzzle(1, GameGrid);
-            // replace CurrentPuzzle.Read(); with CurrentPuzzle.Write(); to test writing functionality
+            // replace CurrentPuzzle.Write(); with CurrentPuzzle.Reaed(); to test puzzle loading functionality
             // refer to puzzles.txt for saved puzzles, and Puzzle.cs for underlying code
-            CurrentPuzzle.Read();
+            CurrentPuzzle.Write();
         }
         
         // currently unimplemented
