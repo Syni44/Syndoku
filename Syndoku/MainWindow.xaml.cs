@@ -21,7 +21,7 @@ namespace Syndoku
     /// </summary>
     public partial class MainWindow : Window 
     {
-        public SudokuGrid SudokuGrid;
+        public SudokuGrid CurrentGrid;
         public Puzzle CurrentPuzzle;
 
         public MainWindow() {
@@ -30,7 +30,7 @@ namespace Syndoku
         }
 
         private void InitializeGame() {
-            SudokuGrid = new SudokuGrid(GameGrid);
+            CurrentGrid = new SudokuGrid(GameGrid);
 
             LoadLastPuzzle();
         }
@@ -39,9 +39,9 @@ namespace Syndoku
         /// Initializes a new sudoku grid puzzle and calls the Write method to save it to puzzles.txt.
         /// </summary>
         private void CreateNewPuzzle() {
-            SudokuGrid.Organize();
-            SudokuGrid.Generate();
-            SudokuGrid.ObscureCells();
+            CurrentGrid.Organize();
+            CurrentGrid.Generate();
+            CurrentGrid.ObscureCells();
 
             CurrentPuzzle = new Puzzle(1, GameGrid);
             CurrentPuzzle.Write();
