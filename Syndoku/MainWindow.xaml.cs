@@ -20,23 +20,39 @@ namespace Syndoku
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window 
-    {       
+    {
+        public SudokuGrid SudokuGrid;
+        public Puzzle CurrentPuzzle;
+
         public MainWindow() {
             InitializeComponent();
             InitializeGame();
         }
 
         private void InitializeGame() {
-            var SudokuGrid = new SudokuGrid(GameGrid);
+            SudokuGrid = new SudokuGrid(GameGrid);
+
+            LoadLastPuzzle();
+        }
+
+        /// <summary>
+        /// Initializes a new sudoku grid puzzle and calls the Write method to save it to puzzles.txt.
+        /// </summary>
+        private void CreateNewPuzzle() {
             SudokuGrid.Organize();
-            // should we be generating a new puzzle every time, even if just loading a puzzle? likely not right?
             SudokuGrid.Generate();
             SudokuGrid.ObscureCells();
 
-            var CurrentPuzzle = new Puzzle(1, GameGrid);
-            // replace CurrentPuzzle.Write(); with CurrentPuzzle.Reaed(); to test puzzle loading functionality
-            // refer to puzzles.txt for saved puzzles, and Puzzle.cs for underlying code
+            CurrentPuzzle = new Puzzle(1, GameGrid);
             CurrentPuzzle.Write();
+        }
+
+        /// <summary>
+        /// Loads the bottom-listed puzzle from puzzles.txt into the sudoku grid on game init.
+        /// </summary>
+        private void LoadLastPuzzle() {
+            CurrentPuzzle = new Puzzle(1, GameGrid);
+            CurrentPuzzle.Read();
         }
         
         // currently unimplemented
