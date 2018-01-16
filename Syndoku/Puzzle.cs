@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.IO;
+using System.Linq;
 using System.Windows;
-using System.Reflection;
+using System.Windows.Controls;
 
 namespace Syndoku
 {
@@ -22,7 +19,6 @@ namespace Syndoku
     {
         public int ID { get; private set; }
         private Grid ThisGrid { get; set; }
-
         private Difficulty Difficulty { get; set; }
 
         public Puzzle(int iID, Grid iGrid) {
@@ -33,7 +29,7 @@ namespace Syndoku
         /// <summary>
         /// Saves the current Sudoku grid by converting cell values to a readable format in a .txt document.
         /// </summary>
-        public void Write() {
+        public void Write() {       // TODO: tidy or refactor Write()
             string filePath = @"..\..\..\Syndoku\puzzles.txt";
             string textToAdd = "";
             List<TextBlock> Obscured = new List<TextBlock>();
@@ -95,7 +91,7 @@ namespace Syndoku
         /// <summary>
         /// Deciphers saved puzzles in a .txt document and reflects the values onto the game grid.
         /// </summary>
-        public void Read() {
+        public void Read() {        // TODO: tidy or refactor Read()
             string filePath = @"..\..\..\Syndoku\puzzles.txt";
             FileStream fs = null;
             string line = "";

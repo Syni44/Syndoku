@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Controls;
 
 namespace Syndoku
@@ -50,8 +47,6 @@ namespace Syndoku
         public List<TextBlock> Column7 = new List<TextBlock>();
         public List<TextBlock> Column8 = new List<TextBlock>();
 
-        public List<string> Values = new List<string>() { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
-
         /// <summary>
         /// Constructor for the game grid object.
         /// </summary>
@@ -97,7 +92,7 @@ namespace Syndoku
         public void Generate() {
             for (int i = 2; i <= 8; i += 3) {
                 for (int j = 2; j <= 8; j += 3) {
-                    bool nulled;
+                    bool nulled;        // TODO: don't use a data flag for loop conditions like this!
                     do {
                         nulled = false;
                         foreach (TextBlock cell in GetBox(i, j)) {
